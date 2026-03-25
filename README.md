@@ -33,9 +33,9 @@ Tier 1 SOC analyst playbooks built from Security+ curriculum and hands-on SIEM l
 ## Lab Environment
 
 - Splunk Free (local instance) with Windows Event Log forwarding from Server 2022
-- Nessus Essentials — vulnerability scans against home lab VMs
-- OWASP Juice Shop — authorised pen testing target for SQL injection and XSS identification
-- Kali Linux — Burp Suite for web application testing
+- Nessus Essentials - vulnerability scans against home lab VMs
+- OWASP Juice Shop - authorised pen testing target for SQL injection and XSS identification
+- Kali Linux - Burp Suite for web application testing
 
 ---
 
