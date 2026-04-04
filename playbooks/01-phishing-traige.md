@@ -29,3 +29,17 @@ Check:
 - [ ] X-Originating-IP
 
 ---
+
+## Step 3 — Header Analysis
+
+Extract full email headers. Paste into a header analyser:
+- Google Admin Toolbox: toolbox.googleapps.com/apps/messageheader
+- MXToolbox: mxtoolbox.com/EmailHeaders.aspx
+
+Look for:
+- [ ] SPF: FAIL or SOFTFAIL → sender domain mismatch
+- [ ] DKIM: FAIL → message was modified in transit or forged
+- [ ] DMARC: FAIL → fails both SPF and DKIM alignment
+- [ ] Unusual geographic origin in Received headers
+
+---
