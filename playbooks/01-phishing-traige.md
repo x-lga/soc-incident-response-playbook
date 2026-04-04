@@ -73,3 +73,12 @@ For attachments:
 | User clicked / credentials entered | P1 Compromise | Jump to Step 7 immediately |
 
 ---
+
+## Step 6 — Phishing Confirmed Response
+
+- [ ] Quarantine email from all mailboxes (admin console → content search → purge)
+- [ ] Block sender domain at email gateway
+- [ ] Document all indicators: sender, subject, URLs, IPs, file hashes
+- [ ] Send user education note (see template below)
+- [ ] Create formal security incident ticket
+- [ ] Escalate to L2/Security team with full analysis
