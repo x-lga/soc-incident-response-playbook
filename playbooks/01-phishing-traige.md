@@ -99,3 +99,18 @@ No action is required from you. If you receive similar emails in future, please 
 
 IT Security Team
 ```
+
+---
+
+## Step 7 — P1: User Clicked or Credentials Entered
+
+**This is a P1 Security Incident. Escalate immediately — do not attempt to resolve at L1.**
+
+Immediate actions before escalating:
+- [ ] Disable user's account: `Disable-ADAccount -Identity <username>`
+- [ ] Revoke all active sessions in Entra ID: Azure Portal → Users → [user] → Revoke Sessions
+- [ ] Notify L2 Security team by phone (not just ticket)
+- [ ] Do NOT log the user out of their machine — forensic preservation
+- [ ] Document exact time reported, time of click if known
+
+---
