@@ -1,6 +1,6 @@
 # Playbook 01 - Phishing Email Triage
 
-**Category:** Security Incident — Email  
+**Category:** Security Incident - Email  
 **ITIL 4 Priority:** P1 if user clicked / credentials entered. P2 if reported before clicking.  
 
 ---
@@ -102,7 +102,7 @@ IT Security Team
 
 ---
 
-## Step 7 — P1: User Clicked or Credentials Entered
+## Step 7 - P1: User Clicked or Credentials Entered
 
 **This is a P1 Security Incident. Escalate immediately - do not attempt to resolve at L1.**
 
