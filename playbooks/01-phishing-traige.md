@@ -43,3 +43,22 @@ Look for:
 - [ ] Unusual geographic origin in Received headers
 
 ---
+
+## Step 4 — URL and Attachment Analysis
+
+**Never click URLs directly.**
+
+```
+For URLs:
+1. Right-click the link → Copy Link Address (if safe to do in admin console)
+2. Submit to VirusTotal: virustotal.com → URL tab
+3. Submit to URLScan: urlscan.io → Scan
+4. Check domain age: whois lookup — newly registered domains are high risk
+
+For attachments:
+1. Do NOT open.
+2. Submit file hash or the file to VirusTotal → File tab
+3. Check sandbox behaviour report if available
+```
+
+---
