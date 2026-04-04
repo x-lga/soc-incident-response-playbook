@@ -1,11 +1,11 @@
-# Playbook 01 — Phishing Email Triage
+# Playbook 01 - Phishing Email Triage
 
 **Category:** Security Incident — Email  
 **ITIL 4 Priority:** P1 if user clicked / credentials entered. P2 if reported before clicking.  
 
 ---
 
-## Step 1 — Initial User Contact
+## Step 1 - Initial User Contact
 
 - [ ] Thank user for reporting (positive reinforcement encourages future reporting)
 - [ ] Ask: "Did you click any links or open any attachments?" → determines P1 vs P2
@@ -14,7 +14,7 @@
 
 ---
 
-## Step 2 — Access Email via Admin Console
+## Step 2 - Access Email via Admin Console
 
 **Do NOT access from the user's machine.** Use the admin console:
 
@@ -30,7 +30,7 @@ Check:
 
 ---
 
-## Step 3 — Header Analysis
+## Step 3 - Header Analysis
 
 Extract full email headers. Paste into a header analyser:
 - Google Admin Toolbox: toolbox.googleapps.com/apps/messageheader
@@ -44,7 +44,7 @@ Look for:
 
 ---
 
-## Step 4 — URL and Attachment Analysis
+## Step 4 - URL and Attachment Analysis
 
 **Never click URLs directly.**
 
@@ -63,7 +63,7 @@ For attachments:
 
 ---
 
-## Step 5 — Classification
+## Step 5 - Classification
 
 | Indicator Count | Classification | Action |
 |-----------------|---------------|--------|
@@ -74,7 +74,7 @@ For attachments:
 
 ---
 
-## Step 6 — Phishing Confirmed Response
+## Step 6 - Phishing Confirmed Response
 
 - [ ] Quarantine email from all mailboxes (admin console → content search → purge)
 - [ ] Block sender domain at email gateway
@@ -104,7 +104,7 @@ IT Security Team
 
 ## Step 7 — P1: User Clicked or Credentials Entered
 
-**This is a P1 Security Incident. Escalate immediately — do not attempt to resolve at L1.**
+**This is a P1 Security Incident. Escalate immediately - do not attempt to resolve at L1.**
 
 Immediate actions before escalating:
 - [ ] Disable user's account: `Disable-ADAccount -Identity <username>`
@@ -124,7 +124,7 @@ Every phishing ticket must include at close:
 4. Actions taken (in order with timestamps)
 5. User education sent: Yes/No
 6. Escalation: Yes/No and reason
-```
+
 
 ---
 
