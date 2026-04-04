@@ -114,3 +114,17 @@ Immediate actions before escalating:
 - [ ] Document exact time reported, time of click if known
 
 ---
+
+## ITIL 4 Documentation Requirement
+
+Every phishing ticket must include at close:
+1. Reported time and reporter
+2. Classification (phishing / FP) and basis for decision
+3. Indicators documented (minimum: sender, subject, one URL/IP if present)
+4. Actions taken (in order with timestamps)
+5. User education sent: Yes/No
+6. Escalation: Yes/No and reason
+```
+
+---
+
