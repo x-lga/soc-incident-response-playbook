@@ -13,3 +13,19 @@
 - [ ] Instruct: "Do not forward, do not click anything further, do not delete the email"
 
 ---
+
+## Step 2 — Access Email via Admin Console
+
+**Do NOT access from the user's machine.** Use the admin console:
+
+- Microsoft 365: Exchange Admin Center → Mail Flow → Message Trace
+- Google Workspace: Admin Console → Reports → Email Log Search
+
+Check:
+- [ ] Full sender email address (not just display name)
+- [ ] Reply-To address (does it differ from From address?)
+- [ ] Return-Path header
+- [ ] Received: headers (trace message origin)
+- [ ] X-Originating-IP
+
+---
