@@ -82,3 +82,20 @@ For attachments:
 - [ ] Send user education note (see template below)
 - [ ] Create formal security incident ticket
 - [ ] Escalate to L2/Security team with full analysis
+
+**User education template:**
+```
+Subject: Phishing Email Report — Action Taken
+
+Hi [Name],
+
+Thank you for reporting the suspicious email. Our analysis confirmed this was a phishing attempt. The email has been removed from all mailboxes.
+
+Indicators found:
+- Sender domain was spoofing [legitimate company]
+- Links pointed to a fraudulent credential harvesting page
+
+No action is required from you. If you receive similar emails in future, please forward them to security@contoso.com without clicking any links.
+
+IT Security Team
+```
