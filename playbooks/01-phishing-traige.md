@@ -62,3 +62,14 @@ For attachments:
 ```
 
 ---
+
+## Step 5 — Classification
+
+| Indicator Count | Classification | Action |
+|-----------------|---------------|--------|
+| 0 indicators | Likely legitimate | Whitelist sender if appropriate, close ticket |
+| 1–2 minor | Suspicious | Monitor, notify user, do not whitelist |
+| 3+ indicators | Phishing confirmed | Proceed to Step 6 |
+| User clicked / credentials entered | P1 Compromise | Jump to Step 7 immediately |
+
+---
