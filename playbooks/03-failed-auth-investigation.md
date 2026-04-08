@@ -24,3 +24,11 @@ index=windows_security EventCode=4625
 | stats count by Account_Name, src_ip, failure_reason
 | sort -count
 | where count > 10
+
+# Identify if failures come from multiple source IPs (stuffing indicator)
+index=windows_security EventCode=4625 Account_Name="jsmith"
+| stats dc(src_ip) as unique_ips, count by Account_Name
+| where unique_ips > 3
+```
+
+---
