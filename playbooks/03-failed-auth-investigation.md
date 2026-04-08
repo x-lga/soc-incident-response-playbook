@@ -15,3 +15,12 @@
 | Failures outside business hours | Potential brute force / stolen credentials | P2 |
 
 ---
+
+## Splunk Investigation (see splunk/ folder for full SPL)
+
+```spl
+# High-level: count failed logins per user in last 24 hours
+index=windows_security EventCode=4625
+| stats count by Account_Name, src_ip, failure_reason
+| sort -count
+| where count > 10
