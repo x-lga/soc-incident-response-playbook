@@ -42,3 +42,15 @@ index=windows_security EventCode=4625 Account_Name="jsmith"
 | 4740 | Account locked out |
 | 4767 | Account unlocked |
 | 4648 | Logon attempt with explicit credentials |
+
+**4625 Failure Reason Codes:**
+
+| Code | Meaning |
+|------|---------|
+| 0xC000006A | Wrong password |
+| 0xC0000064 | Username does not exist |
+| 0xC000006D | Bad username or auth info |
+| 0xC0000234 | Account locked out |
+| 0xC000006F | Outside permitted logon hours |
+
+---
