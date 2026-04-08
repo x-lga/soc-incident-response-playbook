@@ -54,3 +54,16 @@ index=windows_security EventCode=4625 Account_Name="jsmith"
 | 0xC000006F | Outside permitted logon hours |
 
 ---
+
+## Response Procedure
+
+1. Identify the account(s) involved and volume of failures
+2. Pull Splunk query (above) for source IPs
+3. Geolocate unusual source IPs (ipinfo.io or similar)
+4. Check if account is currently locked: `Get-ADUser -Identity <user> -Properties LockedOut`
+5. If single user, failures from expected location → password reset (see AD playbook)
+6. If failures from unusual/foreign IPs → escalate to L2 Security immediately
+7. Document IP addresses and country of origin in ticket
+```
+
+---
