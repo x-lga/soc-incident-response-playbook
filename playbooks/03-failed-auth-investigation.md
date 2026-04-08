@@ -38,7 +38,7 @@ index=windows_security EventCode=4625 Account_Name="jsmith"
 | Event ID | Description |
 |---------|-------------|
 | 4624 | Successful logon |
-| 4625 | Failed logon — includes failure reason code |
+| 4625 | Failed logon - includes failure reason code |
 | 4740 | Account locked out |
 | 4767 | Account unlocked |
 | 4648 | Logon attempt with explicit credentials |
@@ -64,6 +64,6 @@ index=windows_security EventCode=4625 Account_Name="jsmith"
 5. If single user, failures from expected location → password reset (see AD playbook)
 6. If failures from unusual/foreign IPs → escalate to L2 Security immediately
 7. Document IP addresses and country of origin in ticket
-```
+
 
 ---
