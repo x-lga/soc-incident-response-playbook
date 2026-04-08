@@ -32,3 +32,13 @@ index=windows_security EventCode=4625 Account_Name="jsmith"
 ```
 
 ---
+
+## Windows Event IDs for Authentication
+
+| Event ID | Description |
+|---------|-------------|
+| 4624 | Successful logon |
+| 4625 | Failed logon — includes failure reason code |
+| 4740 | Account locked out |
+| 4767 | Account unlocked |
+| 4648 | Logon attempt with explicit credentials |
