@@ -1,6 +1,6 @@
 ### `playbooks/04-false-positive-classification.md`
 
-```markdown
+
 # Playbook 04 — False Positive Classification
 
 **Category:** SOC Process  
