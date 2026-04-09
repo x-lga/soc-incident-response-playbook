@@ -1,5 +1,3 @@
-### `playbooks/04-false-positive-classification.md`
-
 
 # Playbook 04 — False Positive Classification
 
