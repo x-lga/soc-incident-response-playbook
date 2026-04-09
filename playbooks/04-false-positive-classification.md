@@ -15,3 +15,15 @@ A security alert triggered by legitimate activity that matches a detection rule 
 **Risk of incorrect FP classification:** If you mark a real threat as FP, it goes uninvestigated. When in doubt → escalate.
 
 ---
+
+## FP Classification Matrix
+
+| Alert Type | Legitimate Trigger (FP) | Malicious Trigger (True Positive) |
+|-----------|------------------------|----------------------------------|
+| Port scan detected | Vulnerability scanner (Nessus, Qualys) run by IT | External probe from unknown IP |
+| Admin tool usage | IT admin using PsExec for remote support | PsExec from non-admin account after-hours |
+| Large data transfer | Scheduled backup job | Exfiltration (unusual destination, unusual time) |
+| Failed auth spike | Password expiry wave | Credential stuffing from multiple IPs |
+| PowerShell download | Software deployment script (SCCM, Intune) | Malware dropper downloading payload |
+
+---
