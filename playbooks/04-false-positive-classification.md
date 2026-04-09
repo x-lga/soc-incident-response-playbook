@@ -47,3 +47,18 @@ If ANY box is unchecked → do NOT classify as FP. Escalate to L2 for review.
 ## FP Documentation Standard
 
 When closing an alert as FP:
+
+```
+Alert: [Name and ID]
+Triggered by: [Specific action that triggered the rule]
+Determined FP because:
+  - [Criterion 1: e.g., source = Nessus scanner IP 10.10.1.50, confirmed with IT team]
+  - [Criterion 2: e.g., scheduled scan runs every Tuesday 0200 per change calendar]
+Verified by: [Your name]
+Time to close: [HH:MM]
+
+Recommendation: [Add to whitelist / Adjust threshold / No action]
+```
+
+
+---
