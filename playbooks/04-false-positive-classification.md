@@ -43,3 +43,7 @@ Before marking an alert as FP, ALL of the following must be confirmed:
 If ANY box is unchecked → do NOT classify as FP. Escalate to L2 for review.
 
 ---
+
+## FP Documentation Standard
+
+When closing an alert as FP:
