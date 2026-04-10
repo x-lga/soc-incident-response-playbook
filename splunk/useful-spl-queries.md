@@ -48,3 +48,12 @@ index=firewall_logs action=allowed earliest=-24h
 | where dest_port NOT IN (80, 443, 53, 25, 587, 3389, 22)
 | stats count by src_ip, dest_ip, dest_port
 | sort -count
+
+-- Traffic to newly registered or rare domains (requires Threat Intel feed)
+index=dns_logs earliest=-24h
+| stats count by query
+| sort count
+| head 50
+```
+
+---
