@@ -11,3 +11,8 @@ All queries tested in Splunk Free (local instance with forwarded Windows event l
 index=windows_security EventCode=4625 earliest=-24h
 | stats count by Account_Name, src_ip, Failure_Reason
 | sort -count
+
+-- Account lockouts
+index=windows_security EventCode=4740 earliest=-7d
+| stats count by TargetUserName, src_ip
+| sort -count
