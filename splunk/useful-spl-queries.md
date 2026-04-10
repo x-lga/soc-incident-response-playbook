@@ -57,3 +57,11 @@ index=dns_logs earliest=-24h
 ```
 
 ---
+
+## System and Process Events
+
+```spl
+-- PowerShell execution with download commands (common malware dropper)
+index=windows_sysmon EventCode=1 earliest=-24h
+| where Image like "%powershell%" AND (CommandLine like "%DownloadString%" OR CommandLine like "%IEX%" OR CommandLine like "%Invoke-Expression%")
+| table _time, host, User, CommandLine
