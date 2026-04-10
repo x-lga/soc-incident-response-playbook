@@ -1,4 +1,4 @@
-# Splunk SPL Queries — L1 SOC Reference
+# Splunk SPL Queries - L1 SOC Reference
 
 All queries tested in Splunk Free (local instance with forwarded Windows event logs).
 
@@ -23,3 +23,10 @@ index=windows_security EventCode=4624 earliest=-7d
 | where hour < 7 OR hour > 19
 | stats count by Account_Name, src_ip, hour
 | sort -count
+
+-- Users logging in from multiple source IPs (potential account sharing or compromise)
+index=windows_security EventCode=4624 earliest=-24h
+| stats dc(src_ip) as unique_ips by Account_Name
+| where unique_ips > 3
+| sort -unique_ips
+```
