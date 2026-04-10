@@ -78,3 +78,11 @@ index=windows_security EventCode=7045 earliest=-24h
 ```
 
 ---
+
+## Alert Volume Management
+
+```spl
+-- Alert count by type over last 7 days (for identifying noisy rules)
+index=alerts earliest=-7d
+| stats count by alert_name, severity
+| sort -count
