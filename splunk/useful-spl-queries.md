@@ -86,3 +86,15 @@ index=windows_security EventCode=7045 earliest=-24h
 index=alerts earliest=-7d
 | stats count by alert_name, severity
 | sort -count
+
+-- Alert-to-investigation ratio (FP rate proxy)
+index=alerts earliest=-30d
+| stats count as total_alerts, 
+        count(eval(status="false_positive")) as fp_count,
+        count(eval(status="true_positive")) as tp_count
+  by alert_name
+| eval fp_rate = round((fp_count/total_alerts)*100, 1)
+| sort -fp_rate
+```
+
+---
