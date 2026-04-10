@@ -42,3 +42,9 @@ index=firewall_logs earliest=-24h
 | sort -total_bytes
 | head 20
 | eval total_MB = round(total_bytes/1024/1024, 2)
+
+-- Outbound connections to unusual ports
+index=firewall_logs action=allowed earliest=-24h
+| where dest_port NOT IN (80, 443, 53, 25, 587, 3389, 22)
+| stats count by src_ip, dest_ip, dest_port
+| sort -count
