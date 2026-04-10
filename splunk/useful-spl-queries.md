@@ -30,3 +30,15 @@ index=windows_security EventCode=4624 earliest=-24h
 | where unique_ips > 3
 | sort -unique_ips
 ```
+
+---
+
+## Network and Firewall Events
+
+```spl
+-- Top talkers by bytes out (potential exfiltration)
+index=firewall_logs earliest=-24h
+| stats sum(bytes_out) as total_bytes by src_ip
+| sort -total_bytes
+| head 20
+| eval total_MB = round(total_bytes/1024/1024, 2)
