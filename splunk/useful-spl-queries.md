@@ -65,3 +65,9 @@ index=dns_logs earliest=-24h
 index=windows_sysmon EventCode=1 earliest=-24h
 | where Image like "%powershell%" AND (CommandLine like "%DownloadString%" OR CommandLine like "%IEX%" OR CommandLine like "%Invoke-Expression%")
 | table _time, host, User, CommandLine
+
+-- Processes running from unusual locations
+index=windows_sysmon EventCode=1 earliest=-24h
+| where (Image like "%AppData%" OR Image like "%Temp%" OR Image like "%Downloads%") AND Image like "%.exe%"
+| stats count by Image, User, host
+| sort -count
