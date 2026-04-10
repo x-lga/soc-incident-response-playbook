@@ -71,3 +71,10 @@ index=windows_sysmon EventCode=1 earliest=-24h
 | where (Image like "%AppData%" OR Image like "%Temp%" OR Image like "%Downloads%") AND Image like "%.exe%"
 | stats count by Image, User, host
 | sort -count
+
+-- New services created (persistence mechanism)
+index=windows_security EventCode=7045 earliest=-24h
+| table _time, host, ServiceName, ServiceFileName, ServiceAccount
+```
+
+---
