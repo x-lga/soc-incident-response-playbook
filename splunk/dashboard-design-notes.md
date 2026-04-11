@@ -121,3 +121,15 @@ Columns to display: `_time`, `host`, `User`, `Image`, `CommandLine`
 
 ---
 
+#### Row 5 — Outbound Traffic Top Talkers (Table)
+
+```spl
+index=firewall_logs action=allowed earliest=-24h
+| stats sum(bytes_out) as total_bytes by src_ip, dest_ip
+| eval total_MB=round(total_bytes/1024/1024, 2)
+| sort -total_MB
+| head 15
+| fields src_ip, dest_ip, total_MB
+```
+
+---
