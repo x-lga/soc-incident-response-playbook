@@ -164,3 +164,10 @@ index=windows_security (EventCode=4624 OR EventCode=4625) earliest=-7d
 ```
 
 ---
+
+## Dashboard 3 — Endpoint Threat Indicators
+
+**Purpose:** Focused on host-based signals. Used during escalation to T2 or when corroborating a network-layer alert.
+
+---
+
