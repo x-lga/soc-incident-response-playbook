@@ -104,3 +104,20 @@ index=windows_security (EventCode=4624 OR EventCode=4625) earliest=-24h
 - Visualising both on one chart makes volume anomalies obvious — a spike in failures without a corresponding success spike suggests a brute-force attempt rather than a service outage.
 
 ---
+
+#### Row 4 — Suspicious Process Executions (Table)
+
+```spl
+index=windows_sysmon EventCode=1 earliest=-24h
+| where (Image like "%AppData%" OR Image like "%Temp%" OR Image like "%Downloads%")
+      OR (CommandLine like "%IEX%" OR CommandLine like "%DownloadString%" OR CommandLine like "%EncodedCommand%")
+| table _time, host, User, Image, CommandLine
+| sort -_time
+```
+
+Columns to display: `_time`, `host`, `User`, `Image`, `CommandLine`
+
+> **Note on column width:** CommandLine values are long. Set that column to wrap text in the dashboard XML (`<option name="drilldown">cell</option>` and fixed-width layout).
+
+---
+
