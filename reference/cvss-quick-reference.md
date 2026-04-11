@@ -27,3 +27,18 @@ CVSS (Common Vulnerability Scoring System) v3.1 is used to prioritise vulnerabil
 | **Confidentiality/Integrity/Availability (CIA)** | High impact = data loss / service down / corruption. |
 
 ---
+
+## CVE to Action Mapping (L1 Scope)
+
+```
+Receive CVE alert from scanner (Nessus / Qualys):
+
+1. Note CVSS score
+2. Confirm affected system is in your environment
+3. Check if a patch is available: nvd.nist.gov → search CVE ID
+4. Critical/High: Create incident ticket → escalate to Patch Management L2
+5. Medium/Low: Add to next patching cycle → log in Change Management
+6. Document: CVE ID, CVSS score, affected hosts, patch availability, action taken
+```
+
+---
