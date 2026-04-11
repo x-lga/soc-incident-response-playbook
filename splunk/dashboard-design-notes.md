@@ -92,3 +92,15 @@ index=windows_security EventCode=4625 earliest=-24h
 - Drill-down: clicking a bar should filter the table panels below by that username (use token `$click.value$`).
 
 ---
+
+#### Row 3 — Logon Activity Over Time (Line Chart)
+
+```spl
+index=windows_security (EventCode=4624 OR EventCode=4625) earliest=-24h
+| eval event_type=if(EventCode=4624, "Success", "Failure")
+| timechart span=1h count by event_type
+```
+- Two series: Success (blue), Failure (red)
+- Visualising both on one chart makes volume anomalies obvious — a spike in failures without a corresponding success spike suggests a brute-force attempt rather than a service outage.
+
+---
