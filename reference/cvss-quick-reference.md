@@ -15,3 +15,15 @@ CVSS (Common Vulnerability Scoring System) v3.1 is used to prioritise vulnerabil
 | 9.0–10.0 | Critical | Patch immediately - P1 treatment |
 
 ---
+
+## Key CVSS Metrics to Understand at L1
+
+| Metric | What It Means for Triage |
+|--------|------------------------|
+| **Attack Vector (AV)** | Network = remotely exploitable (worse). Local = attacker needs physical access (better). |
+| **Attack Complexity (AC)** | Low = easy to exploit. High = complex conditions required. |
+| **Privileges Required (PR)** | None = no account needed (worse). High = admin rights needed (better). |
+| **User Interaction (UI)** | None = exploit without user action. Required = user must click something. |
+| **Confidentiality/Integrity/Availability (CIA)** | High impact = data loss / service down / corruption. |
+
+---
