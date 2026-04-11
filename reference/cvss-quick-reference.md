@@ -51,7 +51,7 @@ Receive CVE alert from scanner (Nessus / Qualys):
 | High | 7.0-8.9 | Patch within 7 days |
 | Medium | 4.0-6.9 | Patch within 30 days |
 | Low | 0.1-3.9 | Schedule next cycle |
-| Info | 0.0 | No action — informational |
+| Info | 0.0 | No action - informational |
 
 
 ---
