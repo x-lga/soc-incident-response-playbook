@@ -204,3 +204,12 @@ Splunk Free limits searches to a single CPU core and has no search concurrency c
 - Apply `| head N` before expensive `| stats` operations where possible.
 - Avoid `| transaction` — replace with `| stats` and `| eventstats` equivalents.
 - Dashboard auto-refresh should be no faster than 5 minutes unless actively triaging an incident.
+
+### Colour Conventions (consistent across all dashboards)
+| Colour | Meaning |
+|---|---|
+| Red | Critical / confirmed malicious |
+| Orange | High severity / needs review |
+| Yellow | Medium / suspicious but unconfirmed |
+| Blue | Informational / baseline |
+| Green | Within normal thresholds |
