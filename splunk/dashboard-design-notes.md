@@ -193,3 +193,7 @@ index=windows_security EventCode=4624 Logon_Type=3 earliest=-24h
 ---
 
 ## General Design Notes
+
+### Tokens and Drill-Down
+- Define a `$host$` token on the dashboard. Every table that includes `host` should pass the clicked value to this token and use it to filter dependent panels. This turns any row click into a host-scoped investigation view without leaving the dashboard.
+- Set `<drilldown><link><![CDATA[/app/search/search?q=...]]></link></drilldown>` to link directly into a pre-populated Splunk search for full event review.
