@@ -17,3 +17,25 @@ Splunk Free has no role-based access, scheduled alerts, or summary indexing. The
 **Time range token:** Last 24 hours (default), adjustable via time picker input.
 
 ---
+
+### Panel Layout
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  [Time Picker]   [Auto-refresh: 5 min]                              │
+├──────────────┬──────────────┬──────────────┬───────────────────────┤
+│ Failed Logons│ Account      │ Priv Logons  │  Alert Volume (7d)    │
+│   (Single)   │ Lockouts     │  Off-Hours   │    (Column Chart)     │
+│              │  (Single)    │  (Single)    │                       │
+├──────────────┴──────────────┴──────────────┴───────────────────────┤
+│              Top Failed Logon Users (Bar Chart)                     │
+├─────────────────────────────────────────────────────────────────────┤
+│              Logon Activity Over Time (Line Chart)                  │
+├─────────────────────────────────────────────────────────────────────┤
+│  Suspicious Process Executions (Table)                              │
+├─────────────────────────────────────────────────────────────────────┤
+│  Outbound Traffic — Top Talkers (Table)                             │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+---
