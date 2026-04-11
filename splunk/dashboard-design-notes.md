@@ -213,3 +213,13 @@ Splunk Free limits searches to a single CPU core and has no search concurrency c
 | Yellow | Medium / suspicious but unconfirmed |
 | Blue | Informational / baseline |
 | Green | Within normal thresholds |
+
+### XML Snippet — Threshold Colouring on a Single Value Panel
+```xml
+<option name="rangeColors">["0x65A637","0xF7BC38","0xD93F3C"]</option>
+<option name="ranges">[0,50,200]</option>
+<option name="colorMode">block</option>
+```
+Adjust range boundaries after establishing a baseline for your environment.
+
+---
