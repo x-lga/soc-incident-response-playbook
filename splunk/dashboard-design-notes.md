@@ -141,3 +141,26 @@ index=firewall_logs action=allowed earliest=-24h
 **Trigger:** Linked from the Failed Logon KPI tile via drill-down.
 
 ---
+
+### Panels
+
+| Panel | Type | Key Fields |
+|---|---|---|
+| Failed Logons by User (last 7d) | Bar chart | Account_Name, count |
+| Failed Logons by Source IP | Bar chart | src_ip, count |
+| Lockout Timeline | Line chart | TargetUserName, timechart |
+| Logon Success/Fail Ratio by User | Table | Account_Name, success_count, fail_count, ratio |
+| Multi-IP Logon Users | Table | Account_Name, dc(src_ip) |
+
+**Success/Fail ratio panel SPL:**
+```spl
+index=windows_security (EventCode=4624 OR EventCode=4625) earliest=-7d
+| eval outcome=if(EventCode=4624, "success", "failure")
+| stats count by Account_Name, outcome
+| xyseries Account_Name outcome count
+| fillnull value=0
+| eval ratio=round(success/(success+failure)*100, 1)
+| sort -failure
+```
+
+---
