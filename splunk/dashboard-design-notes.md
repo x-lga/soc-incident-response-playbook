@@ -197,3 +197,10 @@ index=windows_security EventCode=4624 Logon_Type=3 earliest=-24h
 ### Tokens and Drill-Down
 - Define a `$host$` token on the dashboard. Every table that includes `host` should pass the clicked value to this token and use it to filter dependent panels. This turns any row click into a host-scoped investigation view without leaving the dashboard.
 - Set `<drilldown><link><![CDATA[/app/search/search?q=...]]></link></drilldown>` to link directly into a pre-populated Splunk search for full event review.
+
+### Performance on Splunk Free
+Splunk Free limits searches to a single CPU core and has no search concurrency controls. To keep dashboards responsive:
+- Use `earliest=` and `latest=` on every search; avoid open-ended queries.
+- Apply `| head N` before expensive `| stats` operations where possible.
+- Avoid `| transaction` — replace with `| stats` and `| eventstats` equivalents.
+- Dashboard auto-refresh should be no faster than 5 minutes unless actively triaging an incident.
