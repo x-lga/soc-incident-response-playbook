@@ -191,3 +191,5 @@ index=windows_security EventCode=4624 Logon_Type=3 earliest=-24h
 ```
 
 ---
+
+## General Design Notes
