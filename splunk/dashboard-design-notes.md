@@ -42,7 +42,7 @@ Splunk Free has no role-based access, scheduled alerts, or summary indexing. The
 
 ### Panel Specifications
 
-#### Row 1 — KPI Singles (Threshold Colouring)
+#### Row 1 - KPI Singles (Threshold Colouring)
 
 **Failed Logon Count**
 ```spl
@@ -70,12 +70,25 @@ index=windows_security EventCode=4624 earliest=-24h
 - Green: 0 | Yellow: 1–3 | Red: > 3
 - Expand the `Account_Name` filter to match your environment's privileged account naming convention.
 
-**Alert Volume — Last 7 Days (Column Chart)**
+**Alert Volume - Last 7 Days (Column Chart)**
 ```spl
 index=alerts earliest=-7d
 | timechart span=1d count by severity
 ```
 - Series: `critical` (red), `high` (orange), `medium` (yellow), `low` (blue)
 - Helps spot alert spikes that may indicate scanning activity or a misconfigured rule.
+
+---
+
+#### Row 2 - Top Failed Logon Users (Bar Chart)
+
+```spl
+index=windows_security EventCode=4625 earliest=-24h
+| stats count by Account_Name
+| sort -count
+| head 10
+```
+- X-axis: `Account_Name` | Y-axis: `count`
+- Drill-down: clicking a bar should filter the table panels below by that username (use token `$click.value$`).
 
 ---
