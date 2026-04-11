@@ -171,3 +171,12 @@ index=windows_security (EventCode=4624 OR EventCode=4625) earliest=-7d
 
 ---
 
+### Panels
+
+| Panel | SPL EventCode | Threat Relevance |
+|---|---|---|
+| New Services Created | 7045 | Persistence |
+| Scheduled Tasks Modified | 4698, 4702 | Persistence |
+| PowerShell Encoded Commands | Sysmon 1 | Execution / Obfuscation |
+| Process Injections | Sysmon 8 | Defense Evasion |
+| Lateral Movement (Pass-the-Hash indicators) | 4624 LogonType=3 with NTLM | Lateral Movement |
