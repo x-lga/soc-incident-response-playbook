@@ -93,7 +93,7 @@ index=windows_security EventCode=4625 earliest=-24h
 
 ---
 
-#### Row 3 — Logon Activity Over Time (Line Chart)
+#### Row 3 - Logon Activity Over Time (Line Chart)
 
 ```spl
 index=windows_security (EventCode=4624 OR EventCode=4625) earliest=-24h
@@ -105,7 +105,7 @@ index=windows_security (EventCode=4624 OR EventCode=4625) earliest=-24h
 
 ---
 
-#### Row 4 — Suspicious Process Executions (Table)
+#### Row 4 - Suspicious Process Executions (Table)
 
 ```spl
 index=windows_sysmon EventCode=1 earliest=-24h
@@ -121,7 +121,7 @@ Columns to display: `_time`, `host`, `User`, `Image`, `CommandLine`
 
 ---
 
-#### Row 5 — Outbound Traffic Top Talkers (Table)
+#### Row 5 - Outbound Traffic Top Talkers (Table)
 
 ```spl
 index=firewall_logs action=allowed earliest=-24h
@@ -134,7 +134,7 @@ index=firewall_logs action=allowed earliest=-24h
 
 ---
 
-## Dashboard 2 — Authentication Deep Dive
+## Dashboard 2 - Authentication Deep Dive
 
 **Purpose:** Used when a failed-logon spike is flagged during triage. Breaks down auth events by user, host, IP, and time.
 
@@ -165,7 +165,7 @@ index=windows_security (EventCode=4624 OR EventCode=4625) earliest=-7d
 
 ---
 
-## Dashboard 3 — Endpoint Threat Indicators
+## Dashboard 3 - Endpoint Threat Indicators
 
 **Purpose:** Focused on host-based signals. Used during escalation to T2 or when corroborating a network-layer alert.
 
@@ -180,3 +180,14 @@ index=windows_security (EventCode=4624 OR EventCode=4625) earliest=-7d
 | PowerShell Encoded Commands | Sysmon 1 | Execution / Obfuscation |
 | Process Injections | Sysmon 8 | Defense Evasion |
 | Lateral Movement (Pass-the-Hash indicators) | 4624 LogonType=3 with NTLM | Lateral Movement |
+
+
+**Lateral movement indicator SPL:**
+```spl
+index=windows_security EventCode=4624 Logon_Type=3 earliest=-24h
+| where Authentication_Package="NTLM" AND NOT Account_Name="ANONYMOUS LOGON"
+| stats count by Account_Name, src_ip, host
+| sort -count
+```
+
+---
