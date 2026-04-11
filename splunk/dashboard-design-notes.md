@@ -133,3 +133,11 @@ index=firewall_logs action=allowed earliest=-24h
 ```
 
 ---
+
+## Dashboard 2 — Authentication Deep Dive
+
+**Purpose:** Used when a failed-logon spike is flagged during triage. Breaks down auth events by user, host, IP, and time.
+
+**Trigger:** Linked from the Failed Logon KPI tile via drill-down.
+
+---
