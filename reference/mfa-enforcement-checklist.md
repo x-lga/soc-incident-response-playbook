@@ -45,3 +45,7 @@ Before verifying enforcement, confirm what is in scope. Skipping this step leads
 - [ ] Users cannot self-enrol a new MFA method without re-authenticating or manager approval (prevents attacker enrolment after password compromise)
 
 ---
+
+## Phase 3 — Coverage Verification
+
+Run these checks against your IdP's sign-in logs or user directory report. Document findings using the gap table in Phase 5.
