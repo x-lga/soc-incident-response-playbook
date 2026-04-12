@@ -131,3 +131,16 @@ Document every gap identified during the review. Do not close this checklist unt
 | System Owner (if scoped system) | | | |
 
 ---
+
+## Reference - Common Remediation Actions
+
+| Gap | Recommended Remediation |
+|---|---|
+| User has no MFA method registered | Force registration at next login via conditional access; set deadline |
+| Legacy auth protocol in use | Block protocol in IdP; coordinate with app owner on migration |
+| SMS OTP in use for Tier 1 | Issue hardware keys or enrol in authenticator app; deprecate SMS |
+| Push MFA without number match | Enable number matching in IdP MFA settings (available in Entra ID, Okta, Duo) |
+| Service account using password only | Migrate to managed identity / workload certificate; add network restriction as interim control |
+| Break-glass account undocumented | Inventory all accounts with global admin; store credentials in sealed envelope in physical safe |
+
+---
