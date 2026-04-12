@@ -28,3 +28,20 @@ Before verifying enforcement, confirm what is in scope. Skipping this step leads
 - [ ] Break-glass / emergency access accounts are documented, stored offline, and excluded from standard MFA policy only via a named exception with a review date
 - [ ] MFA policy applies to guest and external user accounts, not just internal directory members
 
+
+### Supported MFA Methods (rank by strength)
+
+| Method | Phishing-Resistant | Acceptable for Tier 1 |
+|---|---|---|
+| FIDO2 hardware key (YubiKey, etc.) | Yes | Yes |
+| Passkey (device-bound) | Yes | Yes |
+| Certificate-based auth | Yes | Yes |
+| Authenticator app (TOTP/push) | No | Yes (with caveats) |
+| SMS / voice OTP | No | Not recommended — document exception if used |
+| Email OTP | No | Not recommended |
+
+- [ ] Tier 1 systems require phishing-resistant MFA (FIDO2 or certificate) OR there is a documented exception with a migration timeline
+- [ ] Push notification MFA has number-matching or additional context enabled to defend against MFA fatigue attacks
+- [ ] Users cannot self-enrol a new MFA method without re-authenticating or manager approval (prevents attacker enrolment after password compromise)
+
+---
