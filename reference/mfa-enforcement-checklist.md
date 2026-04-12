@@ -93,7 +93,7 @@ MFA enforcement is only effective if attempts to bypass or disable it are detect
 - [ ] Sign-in logs are retained for a minimum of 90 days (30 days is insufficient for incident response timelines)
 - [ ] A test alert was triggered and acknowledged within the expected SLA during the last 90 days
 
-**Sample SPL — MFA fatigue pattern detection (if sign-in logs forwarded to Splunk):**
+**Sample SPL - MFA fatigue pattern detection (if sign-in logs forwarded to Splunk):**
 ```spl
 index=auth_logs result=mfa_failure earliest=-1h
 | stats count as mfa_failures by user, src_ip
@@ -105,5 +105,19 @@ index=auth_logs result=mfa_failure earliest=-1h
 | where success_count > 0
 | table user, src_ip, mfa_failures, success_count
 ```
+
+---
+
+## Phase 5 - Gap Tracking and Remediation
+
+Document every gap identified during the review. Do not close this checklist until each row has an owner and a target date.
+
+| # | Gap Description | Affected System / User Group | Risk Tier | Owner | Target Date | Status |
+|---|---|---|---|---|---|---|
+| 1 | | | | | | Open |
+| 2 | | | | | | Open |
+| 3 | | | | | | Open |
+
+**Status values:** Open / In Progress / Resolved / Accepted Risk (requires sign-off)
 
 ---
