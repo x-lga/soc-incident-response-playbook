@@ -46,6 +46,21 @@ Before verifying enforcement, confirm what is in scope. Skipping this step leads
 
 ---
 
-## Phase 3 — Coverage Verification
+## Phase 3 - Coverage Verification
 
 Run these checks against your IdP's sign-in logs or user directory report. Document findings using the gap table in Phase 5.
+
+### User Account Coverage
+
+```
+Total in-scope user accounts:           ________
+Accounts with MFA registered:           ________
+Accounts with MFA enforced (policy):    ________
+Accounts with MFA capable but not yet
+  required (grace period / exclusion):  ________
+Accounts with no MFA method at all:     ________
+```
+
+- [ ] Accounts with no MFA registered are identified and owners notified
+- [ ] Grace period / exclusion list is reviewed - any account excluded for > 30 days requires written justification
+- [ ] Privileged accounts (global admin, domain admin, security admin roles) are at 100% MFA coverage — no exceptions
