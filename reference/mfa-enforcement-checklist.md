@@ -63,4 +63,10 @@ Accounts with no MFA method at all:     ________
 
 - [ ] Accounts with no MFA registered are identified and owners notified
 - [ ] Grace period / exclusion list is reviewed - any account excluded for > 30 days requires written justification
-- [ ] Privileged accounts (global admin, domain admin, security admin roles) are at 100% MFA coverage — no exceptions
+- [ ] Privileged accounts (global admin, domain admin, security admin roles) are at 100% MFA coverage - no exceptions
+
+### Service Account Review
+
+- [ ] Service accounts that do authenticate interactively are enrolled in MFA or migrated to certificate-based auth / managed identity
+- [ ] Service accounts using shared passwords with no MFA are logged and on a remediation timeline
+- [ ] Service accounts not capable of MFA are network-restricted (firewall rules limiting source IPs / hosts) as a compensating control
