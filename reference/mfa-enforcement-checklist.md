@@ -121,3 +121,13 @@ Document every gap identified during the review. Do not close this checklist unt
 **Status values:** Open / In Progress / Resolved / Accepted Risk (requires sign-off)
 
 ---
+
+## Phase 6 - Sign-Off
+
+| Role | Name | Date | Signature |
+|---|---|---|---|
+| IAM / IdP Owner | | | |
+| Security Team Lead | | | |
+| System Owner (if scoped system) | | | |
+
+---
