@@ -83,3 +83,27 @@ Pick three Tier 1 applications. For each:
 To test enforcement manually: open an in-private browser session, navigate to the application, and attempt sign-in with a test account that has no active SSO session. Confirm an MFA challenge is presented before access is granted.
 
 ---
+## Phase 4 - Monitoring and Alerting Verification
+
+MFA enforcement is only effective if attempts to bypass or disable it are detected.
+
+- [ ] Alerting exists for MFA method changes (new authenticator app registered, phone number changed)
+- [ ] Alerting exists for MFA bypass events (conditional access policy exclusion applied to a user at sign-in)
+- [ ] Alerting exists for repeated MFA failures followed by a successful authentication (may indicate MFA fatigue success)
+- [ ] Sign-in logs are retained for a minimum of 90 days (30 days is insufficient for incident response timelines)
+- [ ] A test alert was triggered and acknowledged within the expected SLA during the last 90 days
+
+**Sample SPL — MFA fatigue pattern detection (if sign-in logs forwarded to Splunk):**
+```spl
+index=auth_logs result=mfa_failure earliest=-1h
+| stats count as mfa_failures by user, src_ip
+| where mfa_failures > 10
+| join user [
+    search index=auth_logs result=success earliest=-1h
+    | stats count as success_count by user
+  ]
+| where success_count > 0
+| table user, src_ip, mfa_failures, success_count
+```
+
+---
