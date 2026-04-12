@@ -18,4 +18,13 @@ Before verifying enforcement, confirm what is in scope. Skipping this step leads
 
 ---
 
+## Phase 2 - Identity Provider (IdP) Configuration Review
+
+### Conditional Access / Authentication Policies
+
+- [ ] MFA is enforced at the IdP level, not only at the application level (application-level enforcement can be bypassed if the IdP session already exists)
+- [ ] Legacy authentication protocols (Basic Auth, NTLM, IMAP/POP3, SMTP AUTH) are blocked or have compensating controls - these protocols cannot pass MFA challenges
+- [ ] "Remember this device" / trusted device tokens are set to expire (recommended: ≤ 30 days for Tier 1 systems)
+- [ ] Break-glass / emergency access accounts are documented, stored offline, and excluded from standard MFA policy only via a named exception with a review date
+- [ ] MFA policy applies to guest and external user accounts, not just internal directory members
 
