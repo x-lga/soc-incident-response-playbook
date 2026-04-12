@@ -70,3 +70,16 @@ Accounts with no MFA method at all:     ________
 - [ ] Service accounts that do authenticate interactively are enrolled in MFA or migrated to certificate-based auth / managed identity
 - [ ] Service accounts using shared passwords with no MFA are logged and on a remediation timeline
 - [ ] Service accounts not capable of MFA are network-restricted (firewall rules limiting source IPs / hosts) as a compensating control
+
+
+### Application-Level Spot Checks
+
+Pick three Tier 1 applications. For each:
+
+- [ ] App 1: `__________________________` — MFA enforced: Yes / No / Partial
+- [ ] App 2: `__________________________` — MFA enforced: Yes / No / Partial
+- [ ] App 3: `__________________________` — MFA enforced: Yes / No / Partial
+
+To test enforcement manually: open an in-private browser session, navigate to the application, and attempt sign-in with a test account that has no active SSO session. Confirm an MFA challenge is presented before access is granted.
+
+---
