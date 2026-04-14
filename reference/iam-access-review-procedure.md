@@ -22,3 +22,22 @@ A review that produces no revocations is not automatically a sign of a well-mana
 | **Security Team** | Spot-checks completed reviews, validates revocations were executed, signs off on campaign closure |
 
 ---
+
+## Step 1 — Scoping and Scheduling
+
+Complete at least 2 weeks before the review window opens.
+
+- [ ] Confirm which systems are in scope for this cycle (use the system register; tier assignments drive frequency)
+- [ ] Confirm the review window dates (typically 10 business days for standard reviews; reduce to 5 for elevated-risk campaigns)
+- [ ] Identify the reviewer for each system — default to direct manager for user accounts, system owner for service accounts
+- [ ] Identify and assign backups for any reviewer who is on leave during the window
+- [ ] Confirm the IAM team has export access to each in-scope system's user directory or access log
+
+**Scope register — fill in per cycle:**
+
+| System | Tier | Reviewer | Backup Reviewer | Review Window |
+|---|---|---|---|---|
+| | | | | |
+| | | | | |
+
+---
