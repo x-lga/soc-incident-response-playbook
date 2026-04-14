@@ -141,3 +141,32 @@ The following artefacts must be retained for a minimum of 3 years (adjust to you
 | Campaign closure sign-off | Signed document or approval record | GRC tool or document management system |
 
 ---
+
+## Step 7 - Campaign Closure and Metrics
+
+Complete after all remediations are verified.
+
+**Metrics to record per campaign:**
+
+| Metric | Value |
+|---|---|
+| Total accounts reviewed | |
+| Certifications (no change) | |
+| Modifications | |
+| Revocations | |
+| Automatic revocations (terminated users found) | |
+| Reviewer completion rate (% completed before deadline) | |
+| Revocations executed within SLA | |
+| Revocations outside SLA (with reason) | |
+
+A revocation rate of less than 2% in a mature environment warrants a review of reviewer engagement or access provisioning controls. A rate above 15% may indicate systemic over-provisioning during onboarding.
+
+**Campaign closure sign-off:**
+
+| Role | Name | Date |
+|---|---|---|
+| IAM Team Lead | | |
+| Security Team Lead | | |
+| CISO / Risk Owner | | |
+
+---
