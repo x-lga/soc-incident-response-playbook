@@ -97,3 +97,32 @@ Reviewers must not leave dispositions blank. A blank line is treated as a certif
 - [ ] Any reviewer who misses the deadline should have their open items auto-revoked or escalated for forced sign-off, depending on organisational policy. Document which approach applies.
 
 ---
+
+## Step 5 - Remediation and Revocation
+
+Revocations and modifications identified during the review must be actioned within defined SLAs:
+
+| Account Type | SLA |
+|---|---|
+| Privileged / admin accounts | 24 hours from decision |
+| Standard user accounts | 5 business days |
+| Dormant accounts (> 90 days inactive) | 5 business days |
+| Terminated user accounts (should never reach this stage - see Step 2) | Immediate |
+
+### Revocation Steps (generic - adapt to each system)
+
+1. Disable the account first (do not delete - deletion destroys the audit log)
+2. Remove group memberships and role assignments
+3. Revoke active sessions / tokens if the system supports it
+4. Log the revocation with: username, system, reviewer name, date of decision, date of execution
+5. Retain the export and reviewer sign-off as evidence (see Step 6)
+
+### Verify Revocations
+
+Before closing the campaign, re-run the access export for the in-scope systems and confirm:
+
+- [ ] All revoked accounts show as disabled or removed
+- [ ] All modifications reflect the access level specified by the reviewer
+- [ ] No new accounts have been added since the export was taken that fall outside the review scope
+
+---
