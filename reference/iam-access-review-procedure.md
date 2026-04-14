@@ -171,7 +171,7 @@ A revocation rate of less than 2% in a mature environment warrants a review of r
 
 ---
 
-## Appendix A — Handling Special Account Types
+## Appendix A - Handling Special Account Types
 
 ### Shared / Generic Accounts
 
@@ -185,7 +185,7 @@ If no owner can be identified, disable the account and raise a ticket to investi
 ### Service Accounts
 
 Service accounts must have:
-- A named application owner (not a team — a specific person)
+- A named application owner (not a team - a specific person)
 - A record of which systems and services authenticate using the account
 - Access scoped to the minimum required for the service function (principle of least privilege)
 - No interactive login enabled unless technically required
@@ -197,5 +197,37 @@ Service accounts with domain admin or equivalent privileges require individual j
 - [ ] Contractor accounts must have an expiry date set at the time of provisioning
 - [ ] Accounts without an expiry date are flagged as a gap during the review
 - [ ] Third-party vendor accounts must be sponsored by an internal owner who certifies continued need at each review cycle
+
+---
+
+## Appendix B - Useful Queries for Pre-Review Data Collection
+
+These queries supplement directory exports with log-based data where available.
+
+**Last login date from Windows Security logs (for accounts not in IdP report):**
+```spl
+index=windows_security EventCode=4624 earliest=-90d
+| stats latest(_time) as last_login by Account_Name
+| eval last_login_date=strftime(last_login, "%Y-%m-%d")
+| sort Account_Name
+```
+
+**Accounts with no login in the last 90 days:**
+```spl
+index=windows_security EventCode=4624 earliest=-90d
+| stats latest(_time) as last_login by Account_Name
+| where (now() - last_login) > 7776000
+| table Account_Name, last_login
+| eval last_login_date=strftime(last_login, "%Y-%m-%d")
+| sort last_login
+```
+
+**Privilege group membership changes in last 30 days:**
+```spl
+index=windows_security (EventCode=4728 OR EventCode=4732 OR EventCode=4756) earliest=-30d
+| eval action=case(EventCode=4728, "Added to global group", EventCode=4732, "Added to local group", EventCode=4756, "Added to universal group")
+| table _time, SubjectUserName, MemberName, TargetUserName, action
+| sort -_time
+```
 
 ---
