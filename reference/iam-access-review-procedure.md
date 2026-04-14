@@ -23,7 +23,7 @@ A review that produces no revocations is not automatically a sign of a well-mana
 
 ---
 
-## Step 1 — Scoping and Scheduling
+## Step 1 - Scoping and Scheduling
 
 Complete at least 2 weeks before the review window opens.
 
@@ -33,11 +33,33 @@ Complete at least 2 weeks before the review window opens.
 - [ ] Identify and assign backups for any reviewer who is on leave during the window
 - [ ] Confirm the IAM team has export access to each in-scope system's user directory or access log
 
-**Scope register — fill in per cycle:**
+**Scope register - fill in per cycle:**
 
 | System | Tier | Reviewer | Backup Reviewer | Review Window |
 |---|---|---|---|---|
 | | | | | |
 | | | | | |
+
+---
+
+## Step 2 - Access Data Collection
+
+Run exports no more than 3 business days before the review window opens to minimise data staleness.
+
+### What to Collect
+
+For each in-scope system, extract:
+
+1. **Active user accounts** - username, display name, account status (enabled/disabled), last login date, creation date
+2. **Role / group memberships** - every role, group, or privilege level assigned to each account
+3. **Privileged access** - separately flag any account with admin, owner, or elevated permissions
+4. **Service and shared accounts** - list separately; these require a named human owner on record
+
+### Data Quality Checks Before Sending to Reviewers
+
+- [ ] Remove or flag accounts with no login in > 90 days - reviewers should default to revoking these unless there is a documented reason (e.g., parental leave)
+- [ ] Flag accounts with multiple high-privilege roles - reviewers should confirm all are still required
+- [ ] Cross-reference account list against HR termination records for the past 90 days - any terminated user with an active account is an automatic revocation, do not send to reviewer
+- [ ] Confirm service accounts have a named owner in the export - unnamed service accounts must be investigated before the review closes
 
 ---
