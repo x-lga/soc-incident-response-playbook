@@ -29,7 +29,7 @@ Complete at least 2 weeks before the review window opens.
 
 - [ ] Confirm which systems are in scope for this cycle (use the system register; tier assignments drive frequency)
 - [ ] Confirm the review window dates (typically 10 business days for standard reviews; reduce to 5 for elevated-risk campaigns)
-- [ ] Identify the reviewer for each system — default to direct manager for user accounts, system owner for service accounts
+- [ ] Identify the reviewer for each system - default to direct manager for user accounts, system owner for service accounts
 - [ ] Identify and assign backups for any reviewer who is on leave during the window
 - [ ] Confirm the IAM team has export access to each in-scope system's user directory or access log
 
@@ -81,5 +81,19 @@ For each account, reviewers must select one of three dispositions:
 | **Revoke** | User should not have this access | IAM team disables or removes access within SLA |
 
 Reviewers must not leave dispositions blank. A blank line is treated as a certification only if the campaign closes with explicit IAM team acknowledgement - this exception should be rare.
+
+---
+
+## Step 4 - Review Execution and Chasing
+
+| Day | Action |
+|---|---|
+| Day 1 | Campaign opens; reviewers notified |
+| Day 5 | First chase: email any reviewer with < 50% completion |
+| Day 8 | Second chase: escalate to system owner for any reviewer with 0% completion |
+| Day 10 | Campaign closes; incomplete items escalated to CISO or equivalent for acceptance or forced revocation |
+
+- [ ] Log all chase actions and responses - this is part of the audit trail
+- [ ] Any reviewer who misses the deadline should have their open items auto-revoked or escalated for forced sign-off, depending on organisational policy. Document which approach applies.
 
 ---
