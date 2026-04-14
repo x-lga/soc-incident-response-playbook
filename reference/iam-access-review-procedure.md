@@ -63,3 +63,23 @@ For each in-scope system, extract:
 - [ ] Confirm service accounts have a named owner in the export - unnamed service accounts must be investigated before the review closes
 
 ---
+
+## Step 3 - Reviewer Assignment and Briefing
+
+- [ ] Send reviewers the access report for their scope in a read-only format (CSV or IAM platform task)
+- [ ] Include the review deadline and escalation contact in the brief
+- [ ] Include the decision criteria (see below) - do not assume reviewers remember them from previous cycles
+
+### Decision Criteria for Reviewers
+
+For each account, reviewers must select one of three dispositions:
+
+| Decision | Meaning | Action Required |
+|---|---|---|
+| **Certify** | Access is appropriate for the user's current role | No change |
+| **Modify** | User still needs some access but the current level is excessive | IAM team adjusts permissions as specified by reviewer |
+| **Revoke** | User should not have this access | IAM team disables or removes access within SLA |
+
+Reviewers must not leave dispositions blank. A blank line is treated as a certification only if the campaign closes with explicit IAM team acknowledgement - this exception should be rare.
+
+---
