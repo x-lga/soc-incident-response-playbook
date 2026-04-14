@@ -126,3 +126,18 @@ Before closing the campaign, re-run the access export for the in-scope systems a
 - [ ] No new accounts have been added since the export was taken that fall outside the review scope
 
 ---
+
+
+## Step 6 - Evidence Retention
+
+The following artefacts must be retained for a minimum of 3 years (adjust to your regulatory requirement):
+
+| Artefact | Format | Retention Location |
+|---|---|---|
+| Pre-review access export (raw) | CSV / system export | Secure shared drive or DLP-protected folder |
+| Completed review with reviewer decisions | CSV or IAM platform report | Same as above |
+| Chase log (emails / ticket history) | Email archive or ticket export | Linked to review record |
+| Revocation log (who, what, when) | CSV or ITSM ticket export | Same as above |
+| Campaign closure sign-off | Signed document or approval record | GRC tool or document management system |
+
+---
