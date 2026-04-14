@@ -8,7 +8,7 @@ This procedure covers the end-to-end access review cycle: scoping, data collecti
 
 Access reviews (also called entitlement reviews or recertification campaigns) verify that every user's access rights remain appropriate for their current role. They are a core control in frameworks including ISO 27001 (A.9.2.6), NIST 800-53 (AC-2), and SOC 2 (CC6.3).
 
-A review that produces no revocations is not automatically a sign of a well-managed environment — it may indicate the review was rubber-stamped. Treat zero revocations as a flag to investigate reviewer engagement, not as evidence of clean data.
+A review that produces no revocations is not automatically a sign of a well-managed environment - it may indicate the review was rubber-stamped. Treat zero revocations as a flag to investigate reviewer engagement, not as evidence of clean data.
 
 ---
 
@@ -168,5 +168,34 @@ A revocation rate of less than 2% in a mature environment warrants a review of r
 | IAM Team Lead | | |
 | Security Team Lead | | |
 | CISO / Risk Owner | | |
+
+---
+
+## Appendix A — Handling Special Account Types
+
+### Shared / Generic Accounts
+
+Shared accounts (e.g., `reception-pc`, `kiosk-user`) must have:
+- A named human owner accountable for activity on the account
+- Documented justification for why a personal account cannot be used
+- A review of whether the account is still required at each access review cycle
+
+If no owner can be identified, disable the account and raise a ticket to investigate.
+
+### Service Accounts
+
+Service accounts must have:
+- A named application owner (not a team — a specific person)
+- A record of which systems and services authenticate using the account
+- Access scoped to the minimum required for the service function (principle of least privilege)
+- No interactive login enabled unless technically required
+
+Service accounts with domain admin or equivalent privileges require individual justification and should be migrated to managed identities or certificate-based auth where the platform supports it.
+
+### Contractor and Third-Party Accounts
+
+- [ ] Contractor accounts must have an expiry date set at the time of provisioning
+- [ ] Accounts without an expiry date are flagged as a gap during the review
+- [ ] Third-party vendor accounts must be sponsored by an internal owner who certifies continued need at each review cycle
 
 ---
