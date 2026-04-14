@@ -11,3 +11,14 @@ Access reviews (also called entitlement reviews or recertification campaigns) ve
 A review that produces no revocations is not automatically a sign of a well-managed environment — it may indicate the review was rubber-stamped. Treat zero revocations as a flag to investigate reviewer engagement, not as evidence of clean data.
 
 ---
+
+## Roles and Responsibilities
+
+| Role | Responsibility |
+|---|---|
+| **IAM Team** | Generates access reports, coordinates campaign timeline, performs technical revocations, retains evidence |
+| **System Owner** | Accountable for the accuracy of access within their system; escalation point if a reviewer is unavailable |
+| **Access Reviewer** | Typically a manager or team lead; reviews each account and certifies or flags for removal |
+| **Security Team** | Spot-checks completed reviews, validates revocations were executed, signs off on campaign closure |
+
+---
