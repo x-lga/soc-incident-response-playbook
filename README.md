@@ -43,7 +43,7 @@ Tactic-to-technique mapping for all playbook scenarios; understanding of attacke
 move after initial access (what happens after credentials are stolen); detection coverage
 heatmap across 14 ATT&CK tactics; family-to-technique mapping for major malware types
 
-**SIEM — Splunk:**
+**SIEM - Splunk:**
 SPL queries for authentication anomalies (brute force, spray, stuffing, PtH detection),
 process execution analysis (T1059.001 PowerShell dropper detection), persistence
 mechanism detection (T1053.005, T1543.003, T1547.001), lateral movement detection
@@ -56,8 +56,8 @@ workflow, Nessus severity alignment
 
 **Identity and compliance:**
 MFA enforcement verification (phishing-resistant vs standard methods, fatigue attack
-detection, legacy auth blocking), IAM access review procedure aligned to ISO 27001,
-SOC 2, Kenya Data Protection Act 2019, and CBK guidelines
+detection, legacy auth blocking), IAM access review procedure aligned to ISO 27001 and 
+SOC 2.
 
 **ITIL 4:**
 P1–P4 incident priority classification, Incident vs Problem vs Change application
