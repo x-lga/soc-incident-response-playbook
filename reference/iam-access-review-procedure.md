@@ -7,7 +7,7 @@ execution against Tier 3 systems.
 
 Access reviews are a required control under:
 - ISO 27001:2022 (A.8.2 - Privileged Access Rights, A.8.3 - Information Access Restriction)
-- SOC 2 (CC6.2 - Access Provisioning and Deprovisioning, CC6.3 — Access Review)
+- SOC 2 (CC6.2 - Access Provisioning and Deprovisioning, CC6.3 - Access Review)
 - Kenya Data Protection Act 2019 (Principle 4 - Data Minimisation, Article 41 - Security of Processing)
 - CBK Prudential Guideline on Information Systems Security (Section 4.2.3)
 
