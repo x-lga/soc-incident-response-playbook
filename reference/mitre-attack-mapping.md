@@ -52,7 +52,7 @@ attacker's next move is T1078 (Valid Accounts) - they will attempt to use the st
 credentials immediately. In Microsoft 365, attackers typically:
 1. Log in within 5–15 minutes of credential entry
 2. Navigate to email to search for sensitive data (Collection - T1114)
-3. Set up forwarding rules to maintain access after password change (Persistence — T1098)
+3. Set up forwarding rules to maintain access after password change (Persistence - T1098)
 4. Look for Azure admin portals or other high-value services using the same password
 
 This is why the P1 response disables the account AND revokes sessions AND notifies
