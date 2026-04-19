@@ -60,7 +60,7 @@ they can be exploited by any attacker on the internet without needing prior acce
 | None (N) | Exploit works without user action |
 | Required (R) | User must click, open, or perform some action |
 
-**Triage impact:** UI:N (no user interaction required) is a silent exploit — no phishing
+**Triage impact:** UI:N (no user interaction required) is a silent exploit - no phishing
 needed. UI:R requires social engineering (phishing, malicious link), which reduces
 the attack surface but does not eliminate the risk.
 
@@ -110,7 +110,7 @@ Nessus uses its own severity rating alongside CVSS. The mapping is:
 | Nessus Rating | CVSS Equivalent | L1 Response |
 |--------------|----------------|------------|
 | Critical | 9.0–10.0 | Immediate escalation to L2 - P1 treatment |
-| High | 7.0–8.9 | Escalate to L2 — patch within 7 days - P2 |
+| High | 7.0–8.9 | Escalate to L2 - patch within 7 days - P2 |
 | Medium | 4.0–6.9 | Schedule for next patch cycle - P3 |
 | Low | 0.1–3.9 | Add to quarterly patch planning - P4 |
 | Informational | 0.0 | No vulnerability - configuration finding or information only |
