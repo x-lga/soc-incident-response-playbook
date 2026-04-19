@@ -14,10 +14,10 @@ Reference: `nvd.nist.gov` (National Vulnerability Database)
 | Score | Severity | Expected Response | Patch Target |
 |-------|---------|-----------------|-------------|
 | 0.0 | None | Informational - no action required | N/A |
-| 0.1–3.9 | Low | Log and schedule for next patch cycle | 90 days |
-| 4.0–6.9 | Medium | Patch within 30 days - monitor affected systems | 30 days |
-| 7.0–8.9 | High | Patch within 7 days - escalate if unpatched after 48 hours | 7 days |
-| 9.0–10.0 | Critical | Immediate action - treat as P1 until patched or mitigated | 24–48 hours |
+| 0.1-3.9 | Low | Log and schedule for next patch cycle | 90 days |
+| 4.0-6.9 | Medium | Patch within 30 days - monitor affected systems | 30 days |
+| 7.0-8.9 | High | Patch within 7 days - escalate if unpatched after 48 hours | 7 days |
+| 9.0-10.0 | Critical | Immediate action - treat as P1 until patched or mitigated | 24–48 hours |
 
 ---
 
@@ -109,10 +109,10 @@ Nessus uses its own severity rating alongside CVSS. The mapping is:
 
 | Nessus Rating | CVSS Equivalent | L1 Response |
 |--------------|----------------|------------|
-| Critical | 9.0–10.0 | Immediate escalation to L2 - P1 treatment |
-| High | 7.0–8.9 | Escalate to L2 - patch within 7 days - P2 |
-| Medium | 4.0–6.9 | Schedule for next patch cycle - P3 |
-| Low | 0.1–3.9 | Add to quarterly patch planning - P4 |
+| Critical | 9.0-10.0 | Immediate escalation to L2 - P1 treatment |
+| High | 7.0-8.9 | Escalate to L2 - patch within 7 days - P2 |
+| Medium | 4.0-6.9 | Schedule for next patch cycle - P3 |
+| Low | 0.1-3.9 | Add to quarterly patch planning - P4 |
 | Informational | 0.0 | No vulnerability - configuration finding or information only |
 
 ---
