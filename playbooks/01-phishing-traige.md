@@ -1,14 +1,14 @@
 # Playbook 01 - Phishing Email Triage
 
-**Category:** Security Incident - Email-Based Attack
-**ITIL 4 Priority:** P1 if user clicked or entered credentials | P2 if reported before any interaction
-**SLA - P1 Response:** 15 minutes | **P1 Resolution:** 4 hours
-**SLA - P2 Response:** 1 hour | **P2 Resolution:** 8 hours
-**Average triage time at L1:** 20-35 minutes (P2, no interaction)
+**Category:** Security Incident - Email-Based Attack  
+**ITIL 4 Priority:** P1 if user clicked or entered credentials | P2 if reported before any interaction  
+**SLA - P1 Response:** 15 minutes | **P1 Resolution:** 4 hours  
+**SLA - P2 Response:** 1 hour | **P2 Resolution:** 8 hours  
+**Average triage time at L1:** 20-35 minutes (P2, no interaction)  
 **MITRE ATT&CK coverage:** T1566 (Phishing), T1566.001 (Spearphishing Attachment),
 T1566.002 (Spearphishing Link), T1598 (Phishing for Information),
 T1204 (User Execution), T1204.001 (Malicious Link), T1204.002 (Malicious File),
-T1078 (Valid Accounts - post-click risk)
+T1078 (Valid Accounts - post-click risk)  
 **Last reviewed:** 2026-07
 
 ---
