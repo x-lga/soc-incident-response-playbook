@@ -128,6 +128,138 @@ allows them to re-authenticate. Both must be done together.
 
 ---
 
+## Playbook 04 - False Positive Classification ATT&CK Mapping
+
+At first glance, false positive classification does not seem to have an ATT&CK
+mapping - it is a defensive process, not an attack technique. That framing misses
+the point. Understanding why something is a false positive requires understanding
+what the attacker's real technique looks like, so you can recognise the difference
+between a legitimate tool doing legitimate work and a legitimate tool being abused
+by an attacker. Every row in the FP decision matrix is grounded in a specific
+ATT&CK technique. If you do not know the technique, you cannot classify the alert.
+
+---
+
+### Why Attackers Deliberately Mimic False Positives (Living-off-the-Land)
+
+The most sophisticated attacks do not use custom malware or exotic tools.
+They use the tools already present on every Windows machine - PowerShell, WMI,
+PsExec, scheduled tasks, Windows services. This is the MITRE ATT&CK category
+known as **Living off the Land (LotL)**, and it is the primary reason FP
+classification is difficult and high-stakes.
+
+The attacker's goal is to be indistinguishable from normal administrative activity.
+A Tier 1 analyst who does not understand the attacker perspective will see a
+PsExec execution and think "that looks like the admin doing something" and dismiss
+it. An analyst who understands ATT&CK will ask: "Is this PsExec execution consistent
+with a known admin task on a known schedule? Or is it a new source, new target,
+unusual time, or unexpected CommandLine?" The ATT&CK mapping is what tells you
+which questions to ask.
+
+---
+
+### ATT&CK Mapping - FP Decision Matrix Row by Row
+
+| Alert Type | Legitimate (True FP) | Malicious (True TP) | Technique if Malicious | Tactic |
+|-----------|---------------------|---------------------|----------------------|--------|
+| Port scan detected | Nessus/Qualys/Tenable scheduled scan by IT (verify scan schedule and scanner IP) | External or internal probe from unexpected source | T1595 - Active Scanning | Reconnaissance (TA0043) |
+| PsExec / admin tool usage | IT admin using PsExec for authorised remote support (expected source, expected target, business hours) | PsExec from non-admin account, unexpected workstation, after hours, or targeting a DC | T1569.002 - System Services: Service Execution | Execution (TA0002) |
+| Large outbound data transfer | Scheduled backup to cloud, approved file migration, software update download | Data staged internally then exfiltrated to attacker infrastructure | T1041 - Exfiltration Over C2 Channel / T1567 - Exfiltration Over Web Service | Exfiltration (TA0010) |
+| Failed auth spike on one account | Password expiry, cached credentials on old device, user forgot password | Brute force (T1110) or credential stuffing (T1110.004) | T1110 - Brute Force | Credential Access (TA0006) |
+| PowerShell DownloadString / IEX | SCCM deployment script, approved automation, software packaging tool | Malware dropper downloading secondary payload in memory | T1059.001 - Command and Scripting Interpreter: PowerShell | Execution (TA0002) |
+| New scheduled task created | Software update installer, approved IT deployment task | Malware establishing persistence - survives reboot without a running process | T1053.005 - Scheduled Task/Job: Scheduled Task | Persistence (TA0003) |
+| New Windows service installed | Software installation, Windows Update component | Malware registering itself as a service for persistence and auto-start | T1543.003 - Create or Modify System Process: Windows Service | Persistence (TA0003) |
+| Outbound traffic on unusual port | Developer testing a new API, application using non-standard port | C2 communication using a non-standard port to evade firewall rules that allow standard ports | T1571 - Non-Standard Port | Command and Control (TA0011) |
+| NTLM auth, LogonType=3 to many hosts | Admin mapping network shares, SCCM inventory, legitimate admin scripting | Pass-the-Hash lateral movement - attacker reusing captured hash to authenticate across hosts | T1550.002 - Use Alternate Authentication Material: Pass the Hash | Lateral Movement (TA0008) |
+| Admin account used from new IP | Admin working from home, VPN exit node changed, new machine | Compromised admin credentials used from attacker infrastructure in a different geography | T1078 - Valid Accounts | Initial Access (TA0001) / Lateral Movement (TA0008) |
+
+---
+
+### The Core ATT&CK Insight Behind FP Classification
+
+Every row in this table has the same underlying structure:
+
+```
+Attacker technique:    Use a legitimate tool or behaviour pattern
+Why it works:          It looks like normal administrative activity
+How to distinguish:    Context - source, destination, time, frequency, baseline
+What ATT&CK provides:  The exact technique name and ID, so you know
+                       which contextual questions to ask
+```
+
+**Worked example - PsExec (T1569.002):**
+
+PsExec is a legitimate Sysinternals tool used by IT admins for remote command
+execution. It is also one of the most commonly abused tools by attackers after
+gaining initial access - used for lateral movement to deploy ransomware, exfiltrate
+data, or establish footholds on additional machines.
+
+Without ATT&CK knowledge: "PsExec execution detected - that is probably an admin."
+
+With ATT&CK knowledge (T1569.002 - System Services: Service Execution):
+- Is the source machine a known admin workstation? (If no → investigate)
+- Is the target machine a normal target for this admin? (If no → investigate)
+- Is the CommandLine argument a known admin task? (If no → investigate)
+- Did this happen during business hours? (If outside hours → investigate)
+- Is this consistent with the last 30 days of baseline? (If not → investigate)
+
+The technique ID gives you the exact behavioural fingerprint to compare against.
+Classifying this as FP without answering all five questions is how breaches
+go undetected for 16+ days.
+
+**Worked example - PowerShell DownloadString (T1059.001):**
+
+PowerShell with DownloadString is used by SCCM to deploy software packages,
+by Intune to run configuration scripts, and by developers for legitimate automation.
+It is also the most common malware dropper technique - the first stage of a
+multi-stage payload downloads the second stage entirely in memory using IEX
+(Invoke-Expression) so no file is written to disk.
+
+The FP vs TP distinction is entirely in the context:
+- FP: source is the SCCM server IP, CommandLine matches a known deployment script,
+  time matches the deployment schedule
+- TP: source is a user workstation, CommandLine contains an obfuscated or
+  Base64-encoded string, time is outside business hours, no matching change record
+
+Without understanding T1059.001 and why IEX + DownloadString in memory is a
+standard evasion technique (no file = no AV scan), you will dismiss the TP as
+a noisy deployment script.
+
+---
+
+### ATT&CK Detection Coverage - Playbook 04 Contribution
+
+Adding Playbook 04 to the coverage heatmap extends detection into techniques
+that produce FP-like signals - the hardest category to detect correctly:
+
+| Technique | ID | Detection Challenge | Playbook 04 Guidance |
+|-----------|-----|--------------------|--------------------|
+| Active Scanning | T1595 | Scanner IP may be internal | Verify scanner IP against known scanners list before classifying FP |
+| System Services: Service Execution | T1569.002 | PsExec is a legitimate admin tool | Source, target, CommandLine, and time all must match known admin pattern |
+| PowerShell | T1059.001 | Deployment scripts look identical to droppers | DownloadString from SCCM IP vs from user workstation are entirely different risks |
+| Scheduled Task | T1053.005 | Many legitimate tasks exist | New tasks created outside maintenance windows without a change record = TP |
+| Windows Service | T1543.003 | Many legitimate services exist | New services not matching known software installs = TP |
+| Non-Standard Port | T1571 | Developer testing looks identical to C2 | Developer testing is temporary; C2 is persistent and beacons on a schedule |
+| Pass-the-Hash | T1550.002 | NTLM LogonType=3 is common | Volume (many hosts) + unusual source + NTLM (not Kerberos) = TP pattern |
+| Valid Accounts | T1078 | Legitimate admin logons from home | New geography + new device + unusual hours + no VPN = TP pattern |
+
+---
+
+### Why This Mapping Makes the Playbook More Valuable
+
+The FP classification playbook without ATT&CK context is a checklist:
+"check the source IP, check the time, check the baseline." Useful, but mechanical.
+
+The FP classification playbook with ATT&CK context is a threat model:
+"I know exactly what T1569.002 looks like when an attacker uses it, I know
+what questions distinguish attacker from admin, and I know which details to
+document in the FP record so the tuning recommendation does not accidentally
+whitelist the real attack technique."
+
+That is the difference between a Tier 1 analyst who runs through steps and one
+who understands why the steps exist - and who therefore cannot be fooled by an
+attacker who has read the same checklist.
+
 ## Detection Coverage Heatmap
 
 This table shows which tactics and techniques are covered by the playbooks in this
